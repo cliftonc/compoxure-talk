@@ -1,0 +1,25 @@
+{
+    "cdn":{
+        "url":"http://localhost:7334"
+    },
+    "parameters": {
+        "servers": {
+            "local": "http://localhost:7001"
+        }
+    },
+    "backend": [
+        {
+            "pattern": ".*",
+            "target":"http://localhost:7001",
+            "host":"localhost",
+            "ttl":"10s",
+            "replaceOuter": false,
+            "quietFailure": false,
+            "leaveContentOnFail": false
+        }
+    ],
+    "cache": {
+        "engine": "redis",
+        "url":"redis://localhost:6379?db=0"
+    }
+}
