@@ -20,7 +20,17 @@ server.use(connectRoute(function (router) {
 
     router.get('/dynamic', function(req, res) {
 		res.writeHead(200, {'Content-Type': 'text/html'});
-    	res.end('This is some incredibly dynamic comment: ' + (new Date()));
+    	res.end('<span class="date">' + (new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1")) + '</span>');
+    });
+
+    router.get('/500', function(req, res) {
+        res.writeHead(500);
+        res.end('This is an error.');
+    });
+
+    router.get('/403', function(req, res) {
+        res.writeHead(403);
+        res.end('Unauthorised error.');
     });
 
 }));
